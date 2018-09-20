@@ -1379,12 +1379,16 @@ class ServiceNetworkMode(object):
 
 
 def build_container_name(project, service, number, slug, one_off=False):
-    bits = [project.lstrip('-_'), service]
+    bits = [service]
     if one_off:
         bits.append('run')
-    return '_'.join(
-        bits + ([str(number), truncate_id(slug)] if slug else [str(number)])
-    )
+    # One number is too inelegant in front, give a few more 
+    pre = str(number)
+    pix = pre.decode('utf8').rjust(5,'0')
+    return '-'.join([pix] + bits )
+    # return '_'.join(
+    #    bits + ([str(number), truncate_id(slug)] if slug else [str(number)])
+    # )
 
 
 # Images

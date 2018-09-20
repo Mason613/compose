@@ -137,8 +137,11 @@ def get_project_name(working_dir, project_name=None, environment=None):
     if project_name:
         return normalize_name(project_name)
 
-    project = os.path.basename(os.path.abspath(working_dir))
-    if project:
-        return normalize_name(project)
-
-    return 'default'
+    # project = os.path.basename(os.path.abspath(working_dir))
+    # if project:
+    #    return normalize_name(project)
+   
+    # I don't like using folder names here, I think it's better to use empty or both dates
+    # todo .
+    return ''
+    # return 'default'
